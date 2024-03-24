@@ -1,6 +1,8 @@
-import { useState, MutableRefObject } from 'react';
+import React, { useState } from 'react';
 
-export const useMyRefByState = <T>(initialValue: T): MutableRefObject<T> => {
+export const useMyRefByState = <T>(
+  initialValue: T,
+): React.MutableRefObject<T> => {
   const [state] = useState({
     current: initialValue,
   });
