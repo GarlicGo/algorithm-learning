@@ -1,7 +1,12 @@
 import React from 'react';
 
 const App: React.FC = () => {
-  return <div>App</div>;
+  return (
+    <div>
+      <div>App</div>
+      {/* <ClosureTest /> */}
+    </div>
+  );
 };
 
 export default App;
