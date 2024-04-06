@@ -2,8 +2,6 @@ const PENDING = 'pending';
 const FULFILLED = 'fulfilled';
 const REJECTED = 'rejected';
 
-// console.log('MyPromise.js');
-
 class MyPromise {
   #state = PENDING;
   #result = undefined;
@@ -119,13 +117,55 @@ class MyPromise {
       this.#run();
     });
   }
+
+  catch(onRejected) {
+    return this.then(undefined, onRejected);
+  }
+
+  finally(onFinally) {
+    return this.then(
+      (data) => {
+        onFinally();
+        return data;
+      },
+      (reason) => {
+        onFinally();
+        throw reason;
+      },
+    );
+  }
+
+  static resolve(value) {
+    if (value instanceof MyPromise) {
+      return value;
+    }
+
+    let _resolve, _reject;
+
+    const p = new MyPromise((resolve, reject) => {
+      _resolve = resolve;
+      _reject = reject;
+    });
+
+    if (p.#isPromiseLike(value)) {
+      value.then(_resolve, _reject);
+    } else {
+      _resolve(value);
+    }
+  }
+
+  static reject(reason) {
+    return new MyPromise((_, reject) => {
+      reject(reason);
+    });
+  }
 }
 
 setTimeout(() => {
   console.log(1);
 }, 0);
 
-new Promise((resolve) => {
+new MyPromise((resolve) => {
   console.log(2);
   resolve(3);
 }).then((data) => {
