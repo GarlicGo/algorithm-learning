@@ -80,9 +80,10 @@ class MyPromise {
 
       try {
         const data = callback(this.#result);
-
         if (this.#isPromiseLike(data)) {
-          data.then(resolve, reject);
+          this.#runMicroTask(() => {
+            data.then(resolve, reject);
+          });
         } else {
           resolve(data);
         }
@@ -93,6 +94,7 @@ class MyPromise {
   }
 
   #run() {
+    // console.log('run');
     if (this.#state === PENDING) return;
     while (this.#handlers.length) {
       const { onFulfilled, onRejected, resolve, reject } =
@@ -107,7 +109,7 @@ class MyPromise {
   }
 
   then(onFulfilled, onRejected) {
-    return new MyPromise((resolve, reject) => {
+    const p = new MyPromise((resolve, reject) => {
       this.#handlers.push({
         onFulfilled: onFulfilled,
         onRejected: onRejected,
@@ -116,6 +118,8 @@ class MyPromise {
       });
       this.#run();
     });
+
+    return p;
   }
 
   catch(onRejected) {
@@ -152,6 +156,8 @@ class MyPromise {
     } else {
       _resolve(value);
     }
+
+    return p;
   }
 
   static reject(reason) {
@@ -161,32 +167,57 @@ class MyPromise {
   }
 }
 
-setTimeout(() => {
-  console.log(1);
-}, 0);
+// console.log(Promise.resolve());
+// console.log(MyPromise.resolve());
 
-new MyPromise((resolve) => {
-  console.log(2);
-  resolve(3);
-}).then((data) => {
-  console.log(data);
+// setTimeout(() => {
+//   console.log(1);
+// }, 0);
+
+// new MyPromise((resolve) => {
+//   console.log(2);
+//   resolve(3);
+// }).then((data) => {
+//   console.log(data);
+// });
+
+// console.log(4);
+
+const p = new MyPromise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('success-1');
+  }, 1000);
 });
 
-console.log(4);
+p.then((data) => {
+  console.log('then', data);
+  return 1;
+}).then((data) => {
+  console.log('then2', data);
+});
 
-// const p = new MyPromise((resolve, reject) => {
-//   setTimeout(() => {
-//     resolve('success');
-//   }, 1000);
-// });
-
-// p.then((data) => {
-//   console.log('then', data);
-//   return new Promise((resolve) => {
-//     setTimeout(() => {
-//       resolve('success2');
-//     }, 1000);
+// MyPromise.resolve()
+//   .then(() => {
+//     console.log(0);
+//     return MyPromise.resolve(4);
+//   })
+//   .then((data) => {
+//     console.log(data);
 //   });
-// }).then((data) => {
-//   console.log('then2', data);
-// });
+
+// MyPromise.resolve()
+//   .then(() => {
+//     console.log(1);
+//   })
+//   .then(() => {
+//     console.log(2);
+//   })
+//   .then(() => {
+//     console.log(3);
+//   })
+//   .then(() => {
+//     console.log(5);
+//   })
+//   .then(() => {
+//     console.log(6);
+//   });
