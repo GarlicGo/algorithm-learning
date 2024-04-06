@@ -54,7 +54,22 @@ class MyPromise {
   }
 
   #runMicroTask(callback) {
-    setTimeout(callback, 0);
+    // 把任务放到微任务队列中
+    if (typeof process === 'object' && typeof process.nextTick === 'function') {
+      // Node.js 环境
+      process.nextTick(callback);
+    } else if (typeof MutationObserver === 'function') {
+      // 浏览器环境
+      const ob = new MutationObserver(callback);
+      const textNode = document.createTextNode('');
+      ob.observe(textNode, {
+        characterData: true,
+      });
+      textNode.data = 'a';
+    } else {
+      // 其他环境，脱离了环境没办法了
+      setTimeout(callback, 0);
+    }
   }
 
   #runOne(callback, resolve, reject) {
@@ -106,19 +121,32 @@ class MyPromise {
   }
 }
 
-const p = new MyPromise((resolve, reject) => {
-  setTimeout(() => {
-    resolve('success');
-  }, 1000);
+setTimeout(() => {
+  console.log(1);
+}, 0);
+
+new Promise((resolve) => {
+  console.log(2);
+  resolve(3);
+}).then((data) => {
+  console.log(data);
 });
 
-p.then((data) => {
-  console.log('then', data);
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve('success2');
-    }, 1000);
-  });
-}).then((data) => {
-  console.log('then2', data);
-});
+console.log(4);
+
+// const p = new MyPromise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve('success');
+//   }, 1000);
+// });
+
+// p.then((data) => {
+//   console.log('then', data);
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve('success2');
+//     }, 1000);
+//   });
+// }).then((data) => {
+//   console.log('then2', data);
+// });
