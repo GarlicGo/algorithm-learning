@@ -1,0 +1,57 @@
+.calendar-container {
+  width: 375px;
+  min-height: 850px;
+  border: 1px solid #ccc;
+}
+
+.week-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.month-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.month-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.month-content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
+
+.month-item {
+  position: relative;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-left: 0;
+  border-top: 0;
+  color: gray;
+}
+
+.active {
+  color: black;
+  font-weight: bold;
+}
+
+.month-item-extra {
+  position: absolute;
+  top: 5px;
+  color: gray;
+  font-size: 12px;
+}

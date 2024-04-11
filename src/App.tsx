@@ -1,5 +1,5 @@
 import React from 'react';
-import { LazyTest } from './components/LazyTest';
+import { Calendar } from './components/Calendar';
 // import { runTest } from './ts/run';
 // import './ts/import/run';
 
@@ -8,9 +8,10 @@ const App: React.FC = () => {
   
   return (
     <div>
-      <div>App</div>
-      <LazyTest />
+      {/* <div>App</div> */}
+      {/* <LazyTest /> */}
       {/* <ClosureTest /> */}
+      <Calendar />
     </div>
   );
 };
