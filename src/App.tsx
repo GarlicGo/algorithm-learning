@@ -1,17 +1,18 @@
 import React from 'react';
-import { Calendar } from './components/Calendar';
+import { ErrorBoundaryTestDemo } from './components/ErrorBoundary';
 // import { runTest } from './ts/run';
 // import './ts/import/run';
 
 const App: React.FC = () => {
   console.log('App Render');
-  
+
   return (
     <div>
       {/* <div>App</div> */}
       {/* <LazyTest /> */}
       {/* <ClosureTest /> */}
-      <Calendar />
+      {/* <Calendar /> */}
+      <ErrorBoundaryTestDemo />
     </div>
   );
 };
