@@ -5,40 +5,40 @@ export const ClosureTest: React.FC = () => {
   const countRef = useRef(0);
 
   //  闭包缺陷
-//   useEffect(() => {
-//     console.log('ClosureTest useEffect');
-//     const timer = setInterval(() => {
-//       console.log('setInterval:', count);
-//     }, 1000);
+  // useEffect(() => {
+  //   console.log('ClosureTest useEffect');
+  //   const timer = setInterval(() => {
+  //     console.log('setInterval:', count);
+  //   }, 1000);
 
-//     return () => {
-//       clearInterval(timer);
-//     };
-//   }, []);
+  //   return () => {
+  //     clearInterval(timer);
+  //   };
+  // }, []);
 
   //  闭包缺陷的解决方案1
-  useEffect(() => {
-    console.log('ClosureTest useEffect');
-    const timer = setInterval(() => {
-      console.log('setInterval:', count);
-    }, 1000);
+  // useEffect(() => {
+  //   console.log('ClosureTest useEffect');
+  //   const timer = setInterval(() => {
+  //     console.log('setInterval:', count);
+  //   }, 1000);
 
-    return () => {
-      clearInterval(timer);
-    };
-  }, [count]);
+  //   return () => {
+  //     clearInterval(timer);
+  //   };
+  // }, [count]);
 
   //  闭包缺陷的解决方案2
-  //   useEffect(() => {
-  //     console.log('ClosureTest useEffect');
-  //     const timer = setInterval(() => {
-  //       console.log('setInterval:', countRef.current);
-  //     }, 1000);
+    useEffect(() => {
+      console.log('ClosureTest useEffect');
+      const timer = setInterval(() => {
+        console.log('setInterval:', countRef.current);
+      }, 1000);
 
-  //     return () => {
-  //       clearInterval(timer);
-  //     };
-  //   }, []);
+      return () => {
+        clearInterval(timer);
+      };
+    }, []);
 
   const handleClick = () => {
     setCount(count + 1);

@@ -1,20 +1,20 @@
 import React from 'react';
-import { ErrorBoundaryTestDemo } from './components/ErrorBoundary';
-// import { runTest } from './ts/run';
-// import './ts/import/run';
+import { TestComponent } from './components/TestComponent';
+import { ClosureTest } from './components/ClosureTest';
+
+console.log('App Loaded');
 
 const App: React.FC = () => {
   console.log('App Render');
 
   return (
     <div>
-      {/* <div>App</div> */}
-      {/* <LazyTest /> */}
+      <TestComponent />
       {/* <ClosureTest /> */}
-      {/* <Calendar /> */}
-      <ErrorBoundaryTestDemo />
     </div>
   );
 };
+
+console.log('App Bottom');
 
 export default App;
