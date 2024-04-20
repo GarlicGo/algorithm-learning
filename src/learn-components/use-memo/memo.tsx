@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-export const MemoExample: React.FC = () => {
+export const UseMemo: React.FC = () => {
   const [count, setCount] = React.useState(0);
   const [sum, setSum] = React.useState(0);
 
@@ -10,7 +10,7 @@ export const MemoExample: React.FC = () => {
   }, [count]);
 
   return (
-    <div>
+    <div className="example-box">
       <div>MemoExample</div>
       <div>count:{count}</div>
       <div>sum:{sum}</div>

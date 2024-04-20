@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 
-export const MemoEffectDiff: React.FC = () => {
+export const UseMemoEffectDiff: React.FC = () => {
   let a = 0;
   let b = 0;
 
@@ -13,7 +13,7 @@ export const MemoEffectDiff: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className="example-box">
       <div>MemoEffectDiff</div>
       <div>a:{a}</div>
       <div>b:{b}</div>

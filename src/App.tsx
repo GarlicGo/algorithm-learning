@@ -1,11 +1,15 @@
 import React from 'react';
-import { KeyExample } from './learn-components/key';
 import './styles/index.css';
+import { MemoCallbackExample } from './learn-components/memo-callback';
+import { UseMemoExample } from './learn-components/use-memo';
+import { KeyExample } from './learn-components/key';
 
 const App: React.FC = () => {
   return (
     <div>
-      <KeyExample />
+      {/* <KeyExample /> */}
+      {/* <UseMemoExample /> */}
+      <MemoCallbackExample />
     </div>
   );
 };
