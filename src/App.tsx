@@ -4,6 +4,7 @@ import { MemoCallbackExample } from './learn-components/memo-callback';
 import { UseMemoExample } from './learn-components/use-memo';
 import { KeyExample } from './learn-components/key';
 import { StateContextExample } from './learn-components/state-context';
+import { CanvasTest } from './Canvas';
 
 const App: React.FC = () => {
   return (
@@ -11,7 +12,8 @@ const App: React.FC = () => {
       {/* <KeyExample /> */}
       {/* <UseMemoExample /> */}
       {/* <MemoCallbackExample /> */}
-      <StateContextExample />
+      {/* <StateContextExample /> */}
+      <CanvasTest />
     </div>
   );
 };
