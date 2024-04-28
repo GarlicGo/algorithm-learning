@@ -1,10 +1,6 @@
 import React from 'react';
 import './styles/index.css';
-import { MemoCallbackExample } from './learn-components/memo-callback';
-import { UseMemoExample } from './learn-components/use-memo';
-import { KeyExample } from './learn-components/key';
-import { StateContextExample } from './learn-components/state-context';
-import { CanvasTest } from './Canvas';
+import { ForwardRefTest } from './components/ForwardRefTest';
 
 const App: React.FC = () => {
   return (
@@ -13,7 +9,8 @@ const App: React.FC = () => {
       {/* <UseMemoExample /> */}
       {/* <MemoCallbackExample /> */}
       {/* <StateContextExample /> */}
-      <CanvasTest />
+      {/* <CanvasTest /> */}
+      <ForwardRefTest />
     </div>
   );
 };
