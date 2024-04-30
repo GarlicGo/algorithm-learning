@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/index.css';
-import { ForwardRefTest } from './components/ForwardRefTest';
+import { TransitionTest } from './components/TransitionTest';
 
 const App: React.FC = () => {
   return (
@@ -10,7 +10,8 @@ const App: React.FC = () => {
       {/* <MemoCallbackExample /> */}
       {/* <StateContextExample /> */}
       {/* <CanvasTest /> */}
-      <ForwardRefTest />
+      {/* <ForwardRefTest /> */}
+      <TransitionTest />
     </div>
   );
 };
