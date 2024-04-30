@@ -6,14 +6,17 @@ export const KeyListExample: React.FC = () => {
     {
       id: 1,
       content: 'A',
+      hidden: false,
     },
     {
       id: 2,
       content: 'B',
+      hidden: false,
     },
     {
       id: 3,
       content: 'C',
+      hidden: false,
     },
   ]);
 
@@ -23,15 +26,25 @@ export const KeyListExample: React.FC = () => {
     setList(newList);
   };
 
+  const hidden = (index: number) => {
+    const newList = [...list];
+    newList[index].hidden = true;
+    setList(newList);
+  };
+
   return (
     <div className="example-box">
       <div>KeyListExample</div>
       <div>list:{JSON.stringify(list)}</div>
       {list.map((item, index) => (
         <KeyListChild
-          key={index}
+          key={item.id}
           content={item.content}
           onDelete={() => deleteItem(index)}
+          // styles={{
+          //   // visibility: item.hidden ? 'hidden' : 'visible',
+          //   display: item.hidden ? 'none' : 'block',
+          // }}
         />
       ))}
     </div>

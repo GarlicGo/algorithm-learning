@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react';
 
 export const UseMemo: React.FC = () => {
+  console.log('MemoExample render');
+  
   const [count, setCount] = React.useState(0);
   const [sum, setSum] = React.useState(0);
 
@@ -8,6 +10,7 @@ export const UseMemo: React.FC = () => {
     console.log('countDouble run');
     return count * 2;
   }, [count]);
+  // const countDouble = count * 2;
 
   return (
     <div className="example-box">

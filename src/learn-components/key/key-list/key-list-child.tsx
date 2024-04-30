@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 interface Props {
   content: string;
   onDelete: () => void;
+  styles?: React.CSSProperties;
 }
 
 export const KeyListChild: React.FC<Props> = (props) => {
@@ -11,7 +12,7 @@ export const KeyListChild: React.FC<Props> = (props) => {
   const [count, setCount] = useState(0);
 
   return (
-    <div>
+    <div style={props.styles}>
       <span>
         {content}: {count}
       </span>

@@ -1,6 +1,10 @@
 import React, { useRef, useState } from 'react';
 
-export const KeyChild: React.FC = () => {
+interface Props {
+  styles?: React.CSSProperties;
+}
+
+export const KeyChild: React.FC<Props> = ({ styles }) => {
   console.log('KeyChild render');
   const [count, setCount] = useState(0);
   const sumRef = useRef(0);
@@ -14,7 +18,7 @@ export const KeyChild: React.FC = () => {
   };
 
   return (
-    <div className="example-box">
+    <div className="example-box" style={styles}>
       <div>KeyChild</div>
       <div>count:{count}</div>
       <button onClick={handleCountClick}>count + 1</button>

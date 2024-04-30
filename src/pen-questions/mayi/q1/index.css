@@ -1,0 +1,98 @@
+.profile-page {
+  width: 375px;
+  background-color: #d9d9d9;
+  overflow: hidden;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  background-color: #1677ff;
+  padding: 15px 10px 10px 10px;
+}
+
+.profile-section .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-section .body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.profile-section .body .avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-section .body .more {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.option-section {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 5px 10px;
+  border-radius: 5px;
+}
+
+.option-section .option-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+.option-section .option-item .option-icon {
+  width: 25px;
+  height: 25px;
+  background-color: orange;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.option-section .option-item .option-left,
+.option-section .option-item .option-right {
+  display: flex;
+  flex-direction: row;
+}
+
+.option-section .option-item .option-name {
+  margin-right: 5px;
+}
+
+.option-section .option-item .option-entry {
+  margin-left: 5px;
+}
+
+.vip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 3px;
+  background-color: gold;
+  border-radius: 5px;
+  font-size: 12px;
+  line-height: 15px;
+}
