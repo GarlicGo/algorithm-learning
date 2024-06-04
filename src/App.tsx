@@ -1,6 +1,8 @@
 import React from 'react';
 import './styles/index.css';
 import { TransitionTest } from './components/TransitionTest';
+import { SetStateTest } from './components/SetStateTest';
+import { AllRender, FragmentRender } from './components/LongListRender';
 
 const App: React.FC = () => {
   return (
@@ -11,7 +13,10 @@ const App: React.FC = () => {
       {/* <StateContextExample /> */}
       {/* <CanvasTest /> */}
       {/* <ForwardRefTest /> */}
-      <TransitionTest />
+      {/* <TransitionTest /> */}
+      {/* <SetStateTest /> */}
+      {/* <FragmentRender /> */}
+      <AllRender />
     </div>
   );
 };
