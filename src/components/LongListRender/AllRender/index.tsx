@@ -8,13 +8,6 @@ export const AllRender: React.FC = () => {
     console.log('FragmentRender', { id, phase, actualDuration, baseDuration, startTime, commitTime });
   };
 
-  //   useEffect(() => {
-  //     let arr: number[] = [];
-  //     for (let i = 0; i < 5000; i++) {
-  //       arr.push(i);
-  //     }
-  //     setList(arr);
-  //   }, []);
 
   return (
     <Profiler id="AllRender" onRender={handleRender}>
@@ -23,7 +16,7 @@ export const AllRender: React.FC = () => {
         onClick={async () => {
           console.time('click');
           let arr: number[] = [];
-          for (let i = 0; i < 5000; i++) {
+          for (let i = 0; i < 10000; i++) {
             arr.push(i);
           }
           setList(arr);

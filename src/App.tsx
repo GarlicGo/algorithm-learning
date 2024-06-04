@@ -15,8 +15,8 @@ const App: React.FC = () => {
       {/* <ForwardRefTest /> */}
       {/* <TransitionTest /> */}
       {/* <SetStateTest /> */}
-      {/* <FragmentRender /> */}
-      <AllRender />
+      <FragmentRender />
+      {/* <AllRender /> */}
     </div>
   );
 };

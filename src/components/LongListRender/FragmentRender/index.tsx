@@ -1,7 +1,9 @@
-import React, { Profiler, ProfilerOnRenderCallback } from 'react';
+import React, { Profiler, ProfilerOnRenderCallback, useState } from 'react';
 import { ItemHoc } from './Item';
 
 export const FragmentRender: React.FC = () => {
+  const [list, setList] = useState<number[]>([]);
+
   const handleRender: ProfilerOnRenderCallback = (id, phase, actualDuration, baseDuration, startTime, commitTime) => {
     console.log('FragmentRender', { id, phase, actualDuration, baseDuration, startTime, commitTime });
   };
@@ -9,7 +11,15 @@ export const FragmentRender: React.FC = () => {
   return (
     <Profiler id="FragmentRender" onRender={handleRender}>
       <div>FragmentRender</div>
-      {Array.from({ length: 5000 }).map((_, index) => (
+      <button
+        onClick={() => {
+          const arr: number[] = Array.from({ length: 10000 }).map((_, index) => index);
+          setList(arr);
+        }}
+      >
+        render
+      </button>
+      {list.map((_, index) => (
         <ItemHoc key={index} content={index} />
       ))}
     </Profiler>
