@@ -1,11 +1,6 @@
 import React from 'react';
 import './styles/index.css';
-import { MemoCallbackExample } from './learn-components/memo-callback';
-import { UseMemoExample } from './learn-components/use-memo';
-import { KeyExample } from './learn-components/key';
-import { StateContextExample } from './learn-components/state-context';
-import { MyHookExample } from './learn-components/my-hook';
-import { ComponentPropsExample } from './learn-components/component-props';
+import { MineScrollListDemo } from './components/VirtualList';
 
 const App: React.FC = () => {
   return (
@@ -14,10 +9,22 @@ const App: React.FC = () => {
       {/* <UseMemoExample /> */}
       {/* <MemoCallbackExample /> */}
       {/* <StateContextExample /> */}
-      <MyHookExample />
+      {/* <MyHookExample /> */}
       {/* <ComponentPropsExample /> */}
+      {/* <CanvasTest /> */}
+      {/* <ForwardRefTest /> */}
+      {/* <TransitionTest /> */}
+      {/* <SetStateTest /> */}
+      {/* <FragmentRender /> */}
+      {/* <AllRender /> */}
+      {/* <FixedSizeListDemo /> */}
+      {/* <VariableSizeListDemo /> */}
+      {/* <DynamicVariableSizeListDemo /> */}
+      <MineScrollListDemo />
     </div>
   );
 };
 
 export default App;
+
+// [object Object]
