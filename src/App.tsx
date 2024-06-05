@@ -4,6 +4,7 @@ import { TransitionTest } from './components/TransitionTest';
 import { SetStateTest } from './components/SetStateTest';
 import { AllRender, FragmentRender } from './components/LongListRender';
 import { FixedSizeListDemo } from './components/VirtualList';
+import { VariableSizeListDemo } from './components/VirtualList/VariableSizeList';
 
 const App: React.FC = () => {
   return (
@@ -18,7 +19,8 @@ const App: React.FC = () => {
       {/* <SetStateTest /> */}
       {/* <FragmentRender /> */}
       {/* <AllRender /> */}
-      <FixedSizeListDemo />
+      {/* <FixedSizeListDemo /> */}
+      <VariableSizeListDemo />
     </div>
   );
 };

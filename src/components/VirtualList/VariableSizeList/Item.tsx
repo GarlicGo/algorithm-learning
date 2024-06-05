@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { getItemSize } from '.';
 
 const Container = styled.div`
   width: 100%;
-  height: 50px;
+  /* height: 100%; */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -22,7 +23,13 @@ interface Props {
 export const Item: React.FC<Props> = ({ index, style }) => {
   return (
     <div style={{ ...style }}>
-      <Container>Item: {index}</Container>
+      <Container
+        style={{
+          height: getItemSize(index),
+        }}
+      >
+        Item: {index}
+      </Container>
     </div>
   );
 };
