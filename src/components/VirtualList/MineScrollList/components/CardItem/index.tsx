@@ -8,22 +8,26 @@ interface Props {
   avatarUrl?: string;
   userName?: string;
   likeNum?: number;
-  onFirstRendered?: (domNode: HTMLElement) => void;
+  onRendered?: (domNode: HTMLElement) => void;
 }
 
-export const CardItem: React.FC<Props> = React.memo(({ title, imageUrl, avatarUrl, userName, likeNum, onFirstRendered }) => {
+export const CardItem: React.FC<Props> = React.memo(({ title, imageUrl, avatarUrl, userName, likeNum, onRendered }) => {
   const domRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <Container
       ref={(domNode) => {
-        if (domNode && !domRef.current) {
-          onFirstRendered?.(domNode);
-          domRef.current = domNode;
-        }
+        domNode && onRendered?.(domNode);
+        domRef.current = domNode;
       }}
     >
-      <img className="card-item-img" src={imageUrl} />
+      <img
+        className="card-item-img"
+        src={imageUrl}
+        onLoad={() => {
+          domRef.current && onRendered?.(domRef.current);
+        }}
+      />
       <div className="card-item-title">{title}</div>
       <div className="card-item-bottom">
         <div className="card-item-bottom-user">

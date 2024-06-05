@@ -6,7 +6,7 @@ import { PostType, getPostList } from './data';
 import { useMeasuredCache } from './hooks';
 
 const CACHE_ITEM_SIZE = 4;
-const ITEM_ESTIMATED_SIZE = 50;
+const ITEM_ESTIMATED_SIZE = 110;
 
 export const MineVirtualListDemo: React.FC = () => {
   const [postList, setPostList] = useState<PostType[]>([]);
@@ -18,10 +18,14 @@ export const MineVirtualListDemo: React.FC = () => {
     },
   });
 
+  const handleScroll: React.UIEventHandler<HTMLDivElement> = (event) => {
+    const { scrollTop } = event.currentTarget;
+    console.log('scrollTop', scrollTop);
+  };
+
   return (
-    <Container>
-      <div>MineVirtualListDemo</div>
-      {postList.length <= 0 && loading && '加载中...'}
+    <Container onScroll={handleScroll}>
+      {/* <div>MineVirtualListDemo</div> */}
       {postList.map((post) => {
         return (
           <CardItem
@@ -34,6 +38,7 @@ export const MineVirtualListDemo: React.FC = () => {
           />
         );
       })}
+      {postList.length <= 0 && loading && '加载中...'}
     </Container>
   );
 };
