@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import { useRequest } from 'ahooks';
 import { CardItem } from './components/CardItem';
 import { Container } from './styles';
-import { useRequest } from 'ahooks';
 import { PostType, getPostList } from './data';
+import { useMeasuredCache } from './hooks';
+
+const CACHE_ITEM_SIZE = 4;
+const ITEM_ESTIMATED_SIZE = 50;
 
 export const MineVirtualListDemo: React.FC = () => {
   const [postList, setPostList] = useState<PostType[]>([]);
+  const {} = useMeasuredCache();
 
   const { loading } = useRequest(getPostList, {
     onSuccess(list) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Container } from './styles';
 import { HeartOutlined } from '@ant-design/icons';
 
@@ -8,11 +8,21 @@ interface Props {
   avatarUrl?: string;
   userName?: string;
   likeNum?: number;
+  onFirstRendered?: (domNode: HTMLElement) => void;
 }
 
-export const CardItem: React.FC<Props> = React.memo(({ title, imageUrl, avatarUrl, userName, likeNum }) => {
+export const CardItem: React.FC<Props> = React.memo(({ title, imageUrl, avatarUrl, userName, likeNum, onFirstRendered }) => {
+  const domRef = useRef<HTMLDivElement | null>(null);
+
   return (
-    <Container>
+    <Container
+      ref={(domNode) => {
+        if (domNode && !domRef.current) {
+          onFirstRendered?.(domNode);
+          domRef.current = domNode;
+        }
+      }}
+    >
       <img className="card-item-img" src={imageUrl} />
       <div className="card-item-title">{title}</div>
       <div className="card-item-bottom">
