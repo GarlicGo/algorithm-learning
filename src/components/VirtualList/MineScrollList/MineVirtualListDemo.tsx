@@ -1,7 +1,7 @@
 import React, { Profiler, ProfilerOnRenderCallback, useRef, useState } from 'react';
 import { useRequest } from 'ahooks';
 import { CardItem } from './components/CardItem';
-import { Container, ContentContainer } from './styles';
+import { Container, ContentContainer, WarpperContainer } from './styles';
 import { PostType, getPostList } from './data';
 import { useMeasuredCache, useRefresh } from './hooks';
 import { VirtualListItem } from './components/VirtualListItem';
@@ -84,19 +84,21 @@ export const MineVirtualListDemo: React.FC = () => {
   };
 
   return (
-    <Profiler id="mine-v-list" onRender={handleRender}>
-      <button onClick={() => refresh()}>refresh</button>
-      <button onClick={() => console.log(getCacheList())}>get all cache</button>
-      <Container onScroll={handleScroll}>
-        <ContentContainer
-          style={{
-            height: getContentHeight(),
-          }}
-        >
-          {getRenderList()}
-        </ContentContainer>
-        {loading && '加载中...'}
-      </Container>
-    </Profiler>
+    <WarpperContainer>
+      <Profiler id="mine-v-list" onRender={handleRender}>
+        {/* <button onClick={() => refresh()}>refresh</button>
+        <button onClick={() => console.log(getCacheList())}>get all cache</button> */}
+        <Container onScroll={handleScroll}>
+          <ContentContainer
+            style={{
+              height: getContentHeight(),
+            }}
+          >
+            {getRenderList()}
+          </ContentContainer>
+          {loading && '加载中...'}
+        </Container>
+      </Profiler>
+    </WarpperContainer>
   );
 };

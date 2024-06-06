@@ -8,5 +8,5 @@ export const useRefresh = () => {
     // console.log('fresh');
 
     setRefresh({});
-  }, 50);
+  }, 10);
 };
