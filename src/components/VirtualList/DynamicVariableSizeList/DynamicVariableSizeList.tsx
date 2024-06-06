@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { estimatedHeight, getItemMetaData, getRangeToRender, measuredData } from './utils';
-import { ListItem } from './ListItem';
+import { ListItem, ListItemV2 } from './ListItem';
 
 export interface DynamicVariableSizeListProps {
   height: number;
@@ -9,7 +9,7 @@ export interface DynamicVariableSizeListProps {
   cacheSize: number;
   // itemSize: (index: number) => number;
   itemEstimatedSize: number;
-  children: React.FC<{ index: number }>;
+  children: React.FC<{ index: number; onSizeChange?: (index: number, domNode: HTMLElement) => void }>;
 }
 
 export const DynamicVariableSizeList: React.FC<DynamicVariableSizeListProps> = (props) => {
@@ -23,6 +23,7 @@ export const DynamicVariableSizeList: React.FC<DynamicVariableSizeListProps> = (
   };
 
   const sizeChangeHandle = (index: number, domNode: HTMLElement) => {
+
     const height = domNode.offsetHeight;
     const { measuredDataMap, lastMeasuredItemIndex } = measuredData;
     const itemMetaData = measuredDataMap[index];
@@ -47,7 +48,11 @@ export const DynamicVariableSizeList: React.FC<DynamicVariableSizeListProps> = (
         width: '100%',
         top: item.offset,
       } as const;
-      items.push(<ListItem key={i} index={i} style={itemStyle} ComponentType={Child} onSizeChange={sizeChangeHandle} />);
+      items.push(
+        <ListItemV2 key={i} style={itemStyle}>
+          <Child index={i} onSizeChange={sizeChangeHandle} />
+        </ListItemV2>,
+      );
     }
     return items;
   };

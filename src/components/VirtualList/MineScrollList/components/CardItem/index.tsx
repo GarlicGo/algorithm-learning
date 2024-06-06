@@ -8,24 +8,31 @@ interface Props {
   avatarUrl?: string;
   userName?: string;
   likeNum?: number;
-  onRendered?: (domNode: HTMLElement) => void;
+  onSizeChange?: (domNode: HTMLElement | null) => void;
 }
 
-export const CardItem: React.FC<Props> = React.memo(({ title, imageUrl, avatarUrl, userName, likeNum, onRendered }) => {
+export const CardItem: React.FC<Props> = React.memo(({ title, imageUrl, avatarUrl, userName, likeNum, onSizeChange }) => {
   const domRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <Container
       ref={(domNode) => {
-        domNode && onRendered?.(domNode);
-        domRef.current = domNode;
+        if (domNode && !domRef.current) {
+          onSizeChange?.(domNode);
+          domRef.current = domNode;
+        }
+
+        // if (!domNode && domRef.current) {
+        //   onSizeChange?.(null);
+        //   domRef.current = null;
+        // }
       }}
     >
       <img
         className="card-item-img"
         src={imageUrl}
         onLoad={() => {
-          domRef.current && onRendered?.(domRef.current);
+          onSizeChange?.(domRef.current);
         }}
       />
       <div className="card-item-title">{title}</div>

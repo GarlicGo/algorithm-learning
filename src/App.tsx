@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/index.css';
-import { MineScrollListDemo, MineVirtualListDemo } from './components/VirtualList';
+import { DynamicVariableSizeListDemo, MineScrollListDemo, MineVirtualListDemo } from './components/VirtualList';
 
 const App: React.FC = () => {
   return (

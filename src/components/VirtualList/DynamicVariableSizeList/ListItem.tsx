@@ -14,3 +14,12 @@ export const ListItem: React.FC<Props> = ({ index, style, ComponentType, onSizeC
     </div>
   );
 };
+
+interface PropsV2 {
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
+}
+
+export const ListItemV2: React.FC<PropsV2> = ({ style, children }) => {
+  return <div style={style}>{children}</div>;
+};
